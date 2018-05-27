@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>v-if</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+      <hr>
+      <li
+        v-for="(ingredient, i) in ingredients"
+        :key="ingredient"
+      >
+        {{ ingredient }} ({{ i }})
+      </li>
+    </ul>
+    <button @click="ingredients.push('Spices')">Add New</button>
+    <hr>
+    <h2>v-for Objects</h2>
+    <ul>
+      <li v-for="person in persons">
+        <!-- order important, name unimportant (v, k, i)-->
+        <div v-for="(value, key, index) in person">
+          {{ key }}: {{ value }} ({{ index }})
+        </div>
+      </li>
+    </ul>
+    <hr>
+    <!-- How to use multiple non-nested elements -->
+    <template v-for="(ingredient, index) in ingredients">
+      <h3>{{ ingredient }}</h3>
+      <p>{{ index }}</p>
+    </template>
+    <hr>
+    <h2>v-for Numbers</h2>
+    <span v-for="n in 10">{{ n }}</span>
+  </div>
+  <script>
+    new Vue({
+        el: '#app',
+        data: {
+          ingredients: ['meat', 'fruit', 'cookies'],
+          persons: [
+            { name: 'Adam', age: 33, color: 'red' },
+            { name: 'Amanda', age: 1337, color: 'blue' },
+          ]
+        },
+      })
+  </script>
+</body>
+</html>

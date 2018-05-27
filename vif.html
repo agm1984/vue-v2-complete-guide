@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>v-if</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- v-if adds or removes elements from the DOM -->
+    <p v-if="show">You can see me!<span> children also</span></p>
+    <p v-else>Else condition!</p>
+    <template v-if="show">
+      <h1>HEADING</h1>
+      <p>Inside a template</p>
+    </template>
+    <!-- v-show does display: none; (not entirely remove) -->
+    <p v-show="show">Do you also see me?</p>
+    <button @click="show = !show">Switch</button>
+  </div>
+  <script>
+    new Vue({
+        el: '#app',
+        data: {
+          show: true,
+        },
+      })
+  </script>
+</body>
+</html>
